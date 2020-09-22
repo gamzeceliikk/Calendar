@@ -1,0 +1,28 @@
+function valid = valid_date(year, month, day)
+if isscalar(year)&& year>0 && year == fix(year)&& ...
+    isscalar(month)&& month>0 && month == fix(month)&&... 
+     isscalar(day)&& day>0&& day == fix(day)
+   if ((mod (year,4) ~= 0) && (month == 2) && (day > 28))
+     valid = false;
+   elseif ((mod(year,4) == 0)&& mod(year,100)~=0 && (month==2) && (day > 29))
+     valid = false;
+   else valid = true;
+   end
+ if (month ==1||month ==3||month ==5||month ==7||month ==8||month ==10||month ==12) && (day > 31) 
+     valid = false;
+ elseif (month == 4||month ==6||month ==9||month ==11) && (day > 30)
+     valid = false;
+ else valid= true;
+ end
+ if (month> 12) || (day >31)
+     valid = false;
+ end
+ if (mod(year,4)~= 0) && (day>= 29) && (month == 2)
+     valid = false;
+ end
+ if mod (year,100)==0 && mod(year,400)~=0 && month==2&& day >28
+     valid = false;
+ end
+else valid = false;
+end 
+end
